@@ -5,8 +5,7 @@ using UnityEngine;
 public class PathManager : MonoBehaviour
 {
     public static PathManager instance;
-
-    public List<Path> route;
+    public List<Tile> path;
 
     private void Awake()
     {
