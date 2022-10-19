@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class TargetSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Transform head;
+    [SerializeField] private Transform target;
+
     void Start()
     {
         
@@ -13,6 +15,11 @@ public class TargetSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        AimHead();
+    }
+
+    private void AimHead()
+    {
+        head.LookAt(target);
     }
 }
