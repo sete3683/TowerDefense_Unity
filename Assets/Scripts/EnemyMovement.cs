@@ -6,12 +6,17 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField, Range(0f, float.MaxValue)] private float moveSpeed = 1f;
 
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(Move());
     }
 
-    IEnumerator Move()
+    private void OnDisable()
+    {
+        ResetPosition();
+    }
+
+    private IEnumerator Move()
     {
         foreach (Tile tile in PathManager.instance.path)
         {
@@ -29,5 +34,12 @@ public class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+
+        gameObject.SetActive(false);
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = transform.parent.position;
     }
 }

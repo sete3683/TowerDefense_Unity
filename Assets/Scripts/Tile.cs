@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private bool isPlaceable;
     [SerializeField] private GameObject tower;
 
-    public bool IsPlaceable { get { return isPlaceable; } }
+    public bool IsPlaceable { get; }
 
     private void OnMouseDown()
     {

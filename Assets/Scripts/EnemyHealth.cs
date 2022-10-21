@@ -7,13 +7,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     private int curHealth;
 
-    private void Start()
+    private void OnEnable()
     {
         curHealth = maxHealth;
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        Destroy(gameObject);
+        if (curHealth <= 0)
+            gameObject.SetActive(false);
     }
 }
