@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PathManager : MonoBehaviour
 {
-    public static PathManager instance;
+    private static PathManager instance;
     public List<Tile> path;
+
+    public static PathManager Instance { get { return instance; } }
 
     private void Awake()
     {

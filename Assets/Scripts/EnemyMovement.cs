@@ -5,6 +5,12 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField, Range(0f, float.MaxValue)] private float moveSpeed = 1f;
+    private EnemyMoney enemyMoney;
+
+    private void Awake()
+    {
+        enemyMoney = GetComponent<EnemyMoney>();
+    }
 
     private void OnEnable()
     {
@@ -18,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator Move()
     {
-        foreach (Tile tile in PathManager.instance.path)
+        foreach (Tile tile in PathManager.Instance.path)
         {
             Vector3 startPos = transform.position;
             Vector3 endPos = tile.transform.position;
@@ -35,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
+        enemyMoney.Penalty();
         gameObject.SetActive(false);
     }
 

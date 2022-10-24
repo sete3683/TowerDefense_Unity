@@ -5,20 +5,16 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    [SerializeField] private int poolSize = 5;
+    [SerializeField] private int poolSize;
     [SerializeField] private float spawnTime;
 
     private GameObject[] pool;
     private WaitForSeconds spawnTimer;
     private int poolIndex;
 
-    private void Awake()
-    {
-        PopulatePool();
-    }
-
     private void Start()
     {
+        PopulatePool();
         spawnTimer = new WaitForSeconds(spawnTime);
         poolIndex = 0;
         StartCoroutine(Spawn());

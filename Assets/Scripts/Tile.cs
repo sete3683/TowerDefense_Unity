@@ -5,16 +5,15 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [SerializeField] private bool isPlaceable;
-    [SerializeField] private GameObject tower;
+    [SerializeField] private Tower tower;
 
-    public bool IsPlaceable { get; }
+    public bool IsPlaceable { get { return isPlaceable; } }
 
     private void OnMouseDown()
     {
         if (isPlaceable)
         {
-            isPlaceable = false;
-            Instantiate(tower, transform.position, transform.rotation);
+            isPlaceable = !tower.CreateTower(transform);
         }
     }
 }

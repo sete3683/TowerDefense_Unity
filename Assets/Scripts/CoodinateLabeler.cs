@@ -18,13 +18,13 @@ public class CoodinateLabeler : MonoBehaviour
 
     private void Update()
     {
+        ColorCoordinate();
+
         if (Input.GetKeyDown(KeyCode.L))
             ToggleCoordinate();
 
         if (!Application.isPlaying)
             UpdateCoordinate();
-
-        ColorCoordinate();
     }
 
     private void UpdateCoordinate()

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private int maxHealth;
+    private EnemyMoney enemyMoney;
     private int curHealth;
+
+    private void Awake()
+    {
+        enemyMoney = GetComponent<EnemyMoney>();
+    }
 
     private void OnEnable()
     {
@@ -14,7 +20,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (curHealth <= 0)
+        if (--curHealth <= 0)
+        {
+            enemyMoney.Reward();
             gameObject.SetActive(false);
+        }
     }
 }
